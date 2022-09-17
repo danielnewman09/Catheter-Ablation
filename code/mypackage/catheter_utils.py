@@ -45,7 +45,7 @@ def derive_sys(n,p):
     M, L, E, I = p
     
     # Structural damping 
-    damp = 0.05
+    damp = 1e-8
 
     # Assuming that the lengths and masses are evenly distributed 
     # (that is, the sytem is homogeneous), let's evenly divide the
@@ -333,7 +333,7 @@ def get_xy_deriv(n,q, lengths):
         y_dot = np.append(y_dot,np.atleast_2d(y_app).T,axis=1)
 
     x_dot_coords = np.cumsum(x_dot,1)
-    y_dot_coords=  np.cumsum(y_dot,1)
+    y_dot_coords =  np.cumsum(y_dot,1)
  
     return x_dot_coords,y_dot_coords
 
@@ -351,7 +351,7 @@ def force(coords,r,time):
     '''
     
     # Maximum velocity of the flow field in m/s
-    flow_amp = 0.5
+    flow_amp = 0.0
     
     # Flow field velocity
     u_y = flow_amp * np.cos(1. * np.pi * time) + flow_amp # m/s
